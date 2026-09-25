@@ -1,6 +1,6 @@
 {
   "name": "@pipeworx/mcp-wakatime",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "WakaTime MCP.",
   "type": "module",
   "main": "src/index.ts",
@@ -24,5 +24,9 @@
   "devDependencies": {
     "typescript": "^5.9.3",
     "@cloudflare/workers-types": "^4.20260405.1"
+  },
+  "pipeworx": {
+    "sourceHash": "v1-4bd395a6906df117aa1cd53f264110d77fd5fd91acb65e4f0c9d204f78b6c842",
+    "sourceCommit": "b0fb3c31386cf0256dcf1e2f1b3440435a87ec35"
   }
 }
