@@ -1,0 +1,245 @@
+[
+  {
+    "name": "current_user",
+    "description": "Authenticated user profile.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {}
+    }
+  },
+  {
+    "name": "user",
+    "description": "Public profile.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "user_id"
+      ]
+    }
+  },
+  {
+    "name": "summaries",
+    "description": "Fetch WakaTime daily coding summaries for a user over a date range (start/end required, YYYY-MM-DD); returns per-day breakdowns by project, language, editor, OS, and category in seconds.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "start": {
+          "type": "string"
+        },
+        "end": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string"
+        },
+        "branches": {
+          "type": "string"
+        },
+        "timeout": {
+          "type": "number"
+        },
+        "writes_only": {
+          "type": "boolean"
+        },
+        "timezone": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "user_id",
+        "start",
+        "end"
+      ]
+    }
+  },
+  {
+    "name": "stats",
+    "description": "Fetch aggregated WakaTime coding stats for a user over a range (\"last_7_days\", \"last_30_days\", \"last_6_months\", \"last_year\", \"all_time\"); returns totals and rankings by language, project, editor, and OS.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "range": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string"
+        },
+        "timeout": {
+          "type": "number"
+        },
+        "writes_only": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "user_id",
+        "range"
+      ]
+    }
+  },
+  {
+    "name": "durations",
+    "description": "Fetch WakaTime coding durations (start/end timestamps with project and file) for a single day (date required, YYYY-MM-DD); optionally slice_by entity/language/branch for granular session data.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string"
+        },
+        "branches": {
+          "type": "string"
+        },
+        "timeout": {
+          "type": "number"
+        },
+        "writes_only": {
+          "type": "boolean"
+        },
+        "timezone": {
+          "type": "string"
+        },
+        "slice_by": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "user_id",
+        "date"
+      ]
+    }
+  },
+  {
+    "name": "heartbeats",
+    "description": "Raw heartbeats for a date.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "user_id",
+        "date"
+      ]
+    }
+  },
+  {
+    "name": "goals",
+    "description": "User's goals.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "page": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "user_id"
+      ]
+    }
+  },
+  {
+    "name": "projects",
+    "description": "User's projects.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "q": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "user_id"
+      ]
+    }
+  },
+  {
+    "name": "leaders",
+    "description": "Fetch WakaTime's public coding leaderboard; optionally filter by language or country_code and paginate; returns ranked users with display names and weekly coding totals.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "language": {
+          "type": "string"
+        },
+        "country_code": {
+          "type": "string"
+        },
+        "page": {
+          "type": "number"
+        }
+      }
+    }
+  },
+  {
+    "name": "commits",
+    "description": "List the commits WakaTime has recorded for one project belonging to a WakaTime user, given user_id (or \"current\") and the project name, with optional author, branch, and page. Returns each commit hash, message, author, branch, timestamps, and the coding time WakaTime attributes to it. Answers what has been committed to a project tracked by WakaTime and how much editor time went into it.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "branch": {
+          "type": "string"
+        },
+        "page": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "user_id",
+        "project"
+      ]
+    }
+  },
+  {
+    "name": "editors",
+    "description": "Fetch WakaTime's public editor usage statistics showing relative popularity of code editors and IDEs across all WakaTime users.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {}
+    }
+  },
+  {
+    "name": "meta",
+    "description": "Fetch WakaTime API metadata including current server time and available timezones; useful for validating timezone strings before passing them to summaries or durations.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {}
+    }
+  }
+]
