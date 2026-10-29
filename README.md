@@ -1,12 +1,15 @@
 # @pipeworx/wakatime
 
-[WakaTime](https://wakatime.com/developers) MCP — coding-time stats by user (langs, projects, editors, OSes). Free API key.
+[WakaTime](https://wakatime.com/developers) MCP — coding-time stats by user (langs, projects, editors, OSes). Account data is BYOK with your own WakaTime personal OAuth token; public data is keyless.
 
-Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 1857+ live data sources. This is an independent, unofficial integration — not affiliated with, endorsed by, or published by the upstream provider.
+Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 1858+ live data sources. This is an independent, unofficial integration — not affiliated with, endorsed by, or published by the upstream provider.
 
 ## Auth
 
-- Platform: `PLATFORM_WAKATIME_KEY`. BYO: `?_apiKey=…` (use your own API key — WakaTime data is per-user).
+WakaTime API keys stop working for anything but editor plugins on 2026-11-01, so this pack takes **your own personal OAuth token** (sent as a Bearer token), passed as `_apiKey`. There is no platform credential.
+
+- Needs your token: `current_user`, `summaries`, `durations`, `heartbeats`, `goals`, `projects`, `commits`, and any call with `user_id: "current"`. Without one the tool refuses and says it requires your WakaTime personal OAuth token.
+- Keyless: `leaders`, `editors`, `meta`, and `user` / `stats` for public profiles (pass the token for private ones).
 
 ## Tools
 
@@ -25,7 +28,7 @@ Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents 
 
 ## Data source
 
-`https://wakatime.com/api/v1`
+WakaTime, public developer API.
 
 ## Quick Start
 
@@ -71,7 +74,7 @@ directly, instead of just this one's:
 }
 ```
 
-Both URLs reach the same gateway and the same 1857+ data sources. The
+Both URLs reach the same gateway and the same 1858+ data sources. The
 only difference is which pack's tools are listed **directly**; `ask_pipeworx`
 reaches all of them from either one.
 

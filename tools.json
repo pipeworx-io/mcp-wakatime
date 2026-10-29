@@ -1,18 +1,27 @@
 [
   {
     "name": "current_user",
-    "description": "Authenticated user profile.",
+    "description": "Profile of the WakaTime account that owns your OAuth token. Requires your own WakaTime personal OAuth token as _apiKey.",
     "inputSchema": {
       "type": "object",
-      "properties": {}
+      "properties": {
+        "_apiKey": {
+          "type": "string",
+          "description": "Your WakaTime personal OAuth access token (Bearer). Required for account data (current user, summaries, durations, heartbeats, goals, projects, commits); optional for public profiles and stats."
+        }
+      }
     }
   },
   {
     "name": "user",
-    "description": "Public profile.",
+    "description": "Public WakaTime profile for a user_id/username; keyless for public profiles, pass your OAuth token as _apiKey for your own or private ones.",
     "inputSchema": {
       "type": "object",
       "properties": {
+        "_apiKey": {
+          "type": "string",
+          "description": "Your WakaTime personal OAuth access token (Bearer). Required for account data (current user, summaries, durations, heartbeats, goals, projects, commits); optional for public profiles and stats."
+        },
         "user_id": {
           "type": "string"
         }
@@ -24,10 +33,14 @@
   },
   {
     "name": "summaries",
-    "description": "Fetch WakaTime daily coding summaries for a user over a date range (start/end required, YYYY-MM-DD); returns per-day breakdowns by project, language, editor, OS, and category in seconds.",
+    "description": "Fetch WakaTime daily coding summaries for a user over a date range (start/end required, YYYY-MM-DD); returns per-day breakdowns by project, language, editor, OS, and category in seconds. Requires your own WakaTime personal OAuth token as _apiKey.",
     "inputSchema": {
       "type": "object",
       "properties": {
+        "_apiKey": {
+          "type": "string",
+          "description": "Your WakaTime personal OAuth access token (Bearer). Required for account data (current user, summaries, durations, heartbeats, goals, projects, commits); optional for public profiles and stats."
+        },
         "user_id": {
           "type": "string"
         },
@@ -62,10 +75,14 @@
   },
   {
     "name": "stats",
-    "description": "Fetch aggregated WakaTime coding stats for a user over a range (\"last_7_days\", \"last_30_days\", \"last_6_months\", \"last_year\", \"all_time\"); returns totals and rankings by language, project, editor, and OS.",
+    "description": "Fetch aggregated WakaTime coding stats for a user over a range (\"last_7_days\", \"last_30_days\", \"last_6_months\", \"last_year\", \"all_time\"); returns totals and rankings by language, project, editor, and OS. Keyless for public profiles; pass your OAuth token as _apiKey for private ones.",
     "inputSchema": {
       "type": "object",
       "properties": {
+        "_apiKey": {
+          "type": "string",
+          "description": "Your WakaTime personal OAuth access token (Bearer). Required for account data (current user, summaries, durations, heartbeats, goals, projects, commits); optional for public profiles and stats."
+        },
         "user_id": {
           "type": "string"
         },
@@ -90,10 +107,14 @@
   },
   {
     "name": "durations",
-    "description": "Fetch WakaTime coding durations (start/end timestamps with project and file) for a single day (date required, YYYY-MM-DD); optionally slice_by entity/language/branch for granular session data.",
+    "description": "Fetch WakaTime coding durations (start/end timestamps with project and file) for a single day (date required, YYYY-MM-DD); optionally slice_by entity/language/branch for granular session data. Requires your own WakaTime personal OAuth token as _apiKey.",
     "inputSchema": {
       "type": "object",
       "properties": {
+        "_apiKey": {
+          "type": "string",
+          "description": "Your WakaTime personal OAuth access token (Bearer). Required for account data (current user, summaries, durations, heartbeats, goals, projects, commits); optional for public profiles and stats."
+        },
         "user_id": {
           "type": "string"
         },
@@ -127,10 +148,14 @@
   },
   {
     "name": "heartbeats",
-    "description": "Raw heartbeats for a date.",
+    "description": "Raw heartbeats for a date. Requires your own WakaTime personal OAuth token as _apiKey.",
     "inputSchema": {
       "type": "object",
       "properties": {
+        "_apiKey": {
+          "type": "string",
+          "description": "Your WakaTime personal OAuth access token (Bearer). Required for account data (current user, summaries, durations, heartbeats, goals, projects, commits); optional for public profiles and stats."
+        },
         "user_id": {
           "type": "string"
         },
@@ -146,10 +171,14 @@
   },
   {
     "name": "goals",
-    "description": "User's goals.",
+    "description": "User's goals. Requires your own WakaTime personal OAuth token as _apiKey.",
     "inputSchema": {
       "type": "object",
       "properties": {
+        "_apiKey": {
+          "type": "string",
+          "description": "Your WakaTime personal OAuth access token (Bearer). Required for account data (current user, summaries, durations, heartbeats, goals, projects, commits); optional for public profiles and stats."
+        },
         "user_id": {
           "type": "string"
         },
@@ -164,10 +193,14 @@
   },
   {
     "name": "projects",
-    "description": "User's projects.",
+    "description": "User's projects. Requires your own WakaTime personal OAuth token as _apiKey.",
     "inputSchema": {
       "type": "object",
       "properties": {
+        "_apiKey": {
+          "type": "string",
+          "description": "Your WakaTime personal OAuth access token (Bearer). Required for account data (current user, summaries, durations, heartbeats, goals, projects, commits); optional for public profiles and stats."
+        },
         "user_id": {
           "type": "string"
         },
@@ -200,10 +233,14 @@
   },
   {
     "name": "commits",
-    "description": "List the commits WakaTime has recorded for one project belonging to a WakaTime user, given user_id (or \"current\") and the project name, with optional author, branch, and page. Returns each commit hash, message, author, branch, timestamps, and the coding time WakaTime attributes to it. Answers what has been committed to a project tracked by WakaTime and how much editor time went into it.",
+    "description": "List the commits WakaTime has recorded for one project belonging to a WakaTime user, given user_id (or \"current\") and the project name, with optional author, branch, and page. Returns each commit hash, message, author, branch, timestamps, and the coding time WakaTime attributes to it. Answers what has been committed to a project tracked by WakaTime and how much editor time went into it. Requires your own WakaTime personal OAuth token as _apiKey.",
     "inputSchema": {
       "type": "object",
       "properties": {
+        "_apiKey": {
+          "type": "string",
+          "description": "Your WakaTime personal OAuth access token (Bearer). Required for account data (current user, summaries, durations, heartbeats, goals, projects, commits); optional for public profiles and stats."
+        },
         "user_id": {
           "type": "string"
         },

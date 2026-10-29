@@ -1,6 +1,6 @@
 {
   "name": "@pipeworx/mcp-wakatime",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "WakaTime MCP.",
   "type": "module",
   "main": "lib/index.js",
@@ -27,7 +27,7 @@
     "mode": "gateway",
     "slug": "wakatime",
     "gatewaySlug": "wakatime",
-    "sourceHash": "v1-34eadab9a9df18169b1a35ff75aaee3ef7375898b7cc320643a6d39106727a5c",
-    "sourceCommit": "98853f34516646cb7c4c1460f09249b262c0269e"
+    "sourceHash": "v1-b94f89fe24229b0ccc3521497bc964709e6d72c441efe243feecaee2fc9620bf",
+    "sourceCommit": "305e2cd138cb71158e9c1e664ea0e6739bd40801"
   }
 }
